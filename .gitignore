@@ -1,0 +1,9 @@
+# Private working files (PDF, transcripts, prompts) – never commit
+Assets_Dont_Commit/
+Prompt.md
+
+# OS / editor clutter
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
