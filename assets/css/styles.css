@@ -313,6 +313,8 @@ a.xref { text-decoration-style: dotted; text-underline-offset: 2px; }
 .q-actions { display: flex; justify-content: flex-end; margin-top: 16px; gap: 8px; }
 .score-big { font-size: 3rem; font-weight: 800; color: var(--brand); line-height: 1; }
 .result-pass { color: var(--ok); } .result-fail { color: var(--bad); }
+.warn-callout { margin: 16px 0; padding: 12px 16px; border: 1.5px solid var(--bad); border-left-width: 6px; border-radius: 8px; background: var(--bad-bg); color: var(--text); }
+.warn-callout > strong { display: block; margin-bottom: 4px; color: var(--bad); }
 .missed { list-style: none; padding: 0; }
 .missed li { border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; margin: 8px 0; background: var(--surface); }
 

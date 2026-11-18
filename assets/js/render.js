@@ -448,7 +448,7 @@
         if (b.examples) walk(b.examples.items, Object.assign({ area: "group", groupTitle: b.examples.title }, base), null);
         if (b.compare) b.compare.items.forEach((item) => item.pair.forEach((p, i) => out.push({
           sx: { id: item.id + "-" + (i + 1), anchorId: item.id, t: p.t, what: p.what, notes: [p.note] },
-          loc: Object.assign({ area: "group", groupTitle: b.compare.title }, base), parentText: item.title
+          loc: Object.assign({ area: "group", groupTitle: b.compare.title, compare: true }, base), parentText: item.title
         })));
       });
     });

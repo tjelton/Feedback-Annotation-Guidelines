@@ -155,7 +155,9 @@ for (const kind of ["questions", "levels", "specificity"]) {
   bank.conflicts.forEach((c) => warn(`${kind} quiz: "${c.text.slice(0, 60)}…" coded ${c.a} and ${c.b} in different places (first one is used)`));
   const items = bank.items;
   const seg = items.filter((it) => it.spec ? it.seq && (it.seq.length > 1 || it.oneIdea) : it.spans.length > 1 || it.oneSpan).length;
-  const types = {};
+  const types = {}, diff = { easy: 0, medium: 0, hard: 0 };
+  const maxEasy = Math.round(Math.min(20, items.length) * GQuiz.EASY_SHARE);
+  let minHard = Infinity;
   if (kind === "specificity") bank.conflicts.forEach((c) => err(`specificity quiz: "${c.text.slice(0, 60)}" has conflicting answers ${c.a} vs ${c.b}`));
   summary.push(`${kind}: bank ${items.length} items (${seg} ${kind === "specificity" ? "idea-splitting" : "span/segmentation"} items)`);
   if (items.length < 60) err(`${kind} quiz bank only has ${items.length} items (want ≥ 60)`);
@@ -164,16 +166,26 @@ for (const kind of ["questions", "levels", "specificity"]) {
     if (qs.length !== Math.min(20, items.length)) err(`${kind}: sample produced ${qs.length} questions`);
     const uids = new Set(qs.map((q) => q.it.uid));
     if (uids.size !== qs.length) err(`${kind}: duplicate item in one quiz`);
+    const nEasy = qs.filter((q) => q.difficulty === "easy").length;
+    if (nEasy > maxEasy) err(`${kind}: ${nEasy} easy questions in one quiz (max ${maxEasy})`);
+    minHard = Math.min(minHard, qs.filter((q) => q.difficulty === "hard").length);
+    if (qs.some((q) => !diff.hasOwnProperty(q.difficulty))) err(`${kind}: question without a difficulty`);
+    qs.forEach((q) => { if (!(q.it.n > 0)) err(`${kind}: item ${q.it.uid} has no bank number`); });
     qs.forEach((q) => {
       const vals = q.options.map((o) => o.value);
       if (!vals.includes(q.answer)) err(`${kind}: answer ${q.answer} missing from options for ${q.it.uid}`);
       if (new Set(vals).size !== vals.length) err(`${kind}: duplicate options for ${q.it.uid}`);
       if (vals.length < (q.type === "what" || q.type === "instance" ? 2 : 3)) err(`${kind}: only ${vals.length} options for ${q.it.uid}`);
-      if (run === 0 || run % 10 === 0) types[q.type] = (types[q.type] || 0) + 1;
+      if (run === 0 || run % 10 === 0) { types[q.type] = (types[q.type] || 0) + 1; diff[q.difficulty]++; }
     });
     if (errors.length > 50) break;
   }
   summary.push(`  question types (sampled): ${Object.entries(types).map(([k, v]) => k + " " + v).join(", ")}`);
+  const nTiers = {};
+  ["easy", "medium", "hard"].forEach((d) => (nTiers[d] = 0));
+  items.forEach((it) => { const seg = it.spec ? it.seq && (it.seq.length > 1 || it.oneIdea) : it.spans.length > 1 || it.oneSpan; nTiers[GQuiz.difficultyOf({ type: seg ? "seg" : "label", it })]++; });
+  const per = (n) => (n / 30).toFixed(1);
+  summary.push(`  difficulty per quiz (avg): easy ${per(diff.easy)}, medium ${per(diff.medium)}, hard ${per(diff.hard)} (min hard ${minHard}); bank: ${Object.entries(nTiers).map(([k, v]) => k + " " + v).join(", ")}`);
 }
 
 const uniq = (a) => [...new Set(a)];
