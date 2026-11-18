@@ -251,20 +251,6 @@ window.GUIDE = window.GUIDE || {};
               "Second idea: **What** (says what is missing, doesn’t point to an instance).",
               "Coding the two sentences together would wrongly suggest that one idea does both."
             ] } },
-            { sx: { id: "s43-intro-conclusion", ideas: [
-              { t: "Your introduction clearly states the argument, ", lv: "FT", code: "both" },
-              { t: "but your conclusion just repeats it.", lv: "FT", code: "both" }
-            ], notes: [
-              "Two ideas: the comment moves from the introduction to the conclusion.",
-              { text: "First idea: **Both**.", sub: [
-                "Instance: “your introduction” is a location in the submission.",
-                "What: it says what is good about the introduction (it clearly states the argument)."
-              ] },
-              { text: "Second idea: **Both**.", sub: [
-                "Instance: “your conclusion” is a location in the submission.",
-                "What: it says what is wrong with the conclusion (it just repeats the argument)."
-              ] }
-            ] } },
             { sx: { id: "s43-strong-because", t: "Your introduction is strong because it clearly states the argument.", lv: "FT", code: "both", oneIdea: true, notes: [
               "One idea: the second half is the reason for the first.",
               { text: "Code: **Both**.", sub: [
