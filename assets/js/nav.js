@@ -19,7 +19,8 @@
     { href: "questions.html", label: "2. Questions", kind: "questions" },
     { href: "levels.html", label: "3. Levels", kind: "levels" },
     { href: "specificity.html", label: "4. Specificity", kind: "specificity" },
-    { href: "quiz.html", label: "Quizzes" }
+    { href: "quiz.html", label: "Quizzes" },
+    { href: "annotations.html", label: "Real Annotations" }
   ];
 
   function renderHeader() {
@@ -50,7 +51,8 @@
     { href: "questions.html", title: "2. Feedback Questions" },
     { href: "levels.html", title: "3. Feedback Levels" },
     { href: "specificity.html", title: "4. Specificity" },
-    { href: "quiz.html", title: "Quizzes" }
+    { href: "quiz.html", title: "Quizzes" },
+    { href: "annotations.html", title: "Real Annotations" }
   ];
 
   function renderPager() {

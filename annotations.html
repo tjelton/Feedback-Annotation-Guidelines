@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Real Annotations</title>
+<meta name="description" content="Installing and using the annotation tool for the real annotations.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2317465e'/%3E%3Cpath d='M8 10h16M8 16h11M8 22h14' stroke='%23fff' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<header id="site-header"></header>
+<main class="page">
+<div class="with-toc">
+<aside class="toc" id="toc" aria-label="On this page">
+  <details open><summary>On this page</summary><ul>
+    <li><a href="#intro">Introduction</a></li>
+    <li><a href="#install">1. Installing the required software</a></li>
+    <li><a href="#annotate">2. Making annotations</a></li>
+  </ul></details>
+</aside>
+<div id="content">
+
+<div class="page-head"><div><div class="eyebrow">Annotation tool</div><h1>Real Annotations</h1></div></div>
+
+<div class="warn-callout" role="note">
+  <strong>Wait until you’re told to start</strong>
+  Only follow the steps on this page once you are ready to start the real annotations. While you are working through the training, ignore this page until you are told to look at it.
+</div>
+
+<section class="card" id="intro">
+  <p>In preparation for the AI annotations, I have made a custom annotation tool for us to use. It is available on GitHub. Below, I’ll explain the installation of the interface, as well as how to use it.</p>
+  <p>The aim is to get you familiar with the annotation tool, so that you can then go off and do the trial annotations.</p>
+</section>
+
+<section class="card steps" id="install">
+  <h2>Section 1: Installing the required software</h2>
+  <ol class="step-list">
+    <li>Visit <a href="https://github.com/tjelton/text-annotation-gui" rel="noopener">https://github.com/tjelton/text-annotation-gui</a>.</li>
+
+    <li>Once on the website, click the green <strong>Code</strong> button, then click <strong>Download ZIP</strong>.
+      <figure class="shot">
+        <img src="assets/images/download_code.png" width="1253" height="573" loading="lazy"
+             alt="The GitHub page for text-annotation-gui with the green Code menu open and an arrow pointing to Download ZIP.">
+      </figure>
+    </li>
+
+    <li>Open a new terminal on your computer (Mac users: open Spotlight search and enter “Terminal”). Type the following and press Enter (don’t type the quotation marks):
+      <pre class="cmd"><code>python3 --version</code></pre>
+      If an error message appears, you don’t have Python, and you need to install it:
+      <ol class="sub-steps" type="a">
+        <li>Go to <a href="https://www.python.org/downloads/" rel="noopener">https://www.python.org/downloads/</a>.</li>
+        <li>Click the <strong>Download</strong> button (it should detect which operating system you’re using). Then go to your Downloads folder, open the file you downloaded and follow the steps.
+          <figure class="shot">
+            <img src="assets/images/download_Python.png" width="2394" height="1040" loading="lazy"
+                 alt="The python.org downloads page with an arrow pointing to the yellow Download Python button.">
+          </figure>
+        </li>
+        <li>Close the terminal and force quit it.</li>
+        <li>Open a new terminal and enter <code>python3 --version</code> again. If version information appears, Python is now installed! If not, shut down your computer and turn it back on, then open a new terminal and try <code>python3 --version</code> once more. If it still doesn’t work, please reach out for help.</li>
+      </ol>
+    </li>
+
+    <li>Move the ZIP file you downloaded to wherever you want to keep the tool, then unzip it.</li>
+
+    <li>Right-click the unzipped folder and select <strong>New Terminal at Folder</strong>.
+      <figure class="shot shot-small">
+        <img src="assets/images/new_terminal.png" width="562" height="288" loading="lazy"
+             alt="The right-click menu on the text-annotation-gui-main folder with New Terminal at Folder highlighted.">
+      </figure>
+      <ol class="sub-steps" type="a">
+        <li>For Windows users, the process should be similar (on Windows 11 the option is called <strong>Open in Terminal</strong>). If you get stuck, please reach out.</li>
+      </ol>
+    </li>
+  </ol>
+  <p class="steps-done">With this, you are now ready to start some annotations!</p>
+</section>
+
+<section class="card steps" id="annotate">
+  <h2>Section 2: Making annotations</h2>
+  <ol class="step-list" type="a">
+    <li>When it comes to making annotations, you will be told what data to use. To get the data ready, drag the folder of data into the same folder as the annotation tool you downloaded from GitHub. The image below shows an example of this:
+      <figure class="shot">
+        <img src="assets/images/moved_into_folder.png" width="1826" height="854" loading="lazy"
+             alt="The text-annotation-gui folder in Finder, with a data folder called Batch_1 moved into it alongside annotation_tool, the config files and data_training.">
+      </figure>
+      <p>You’ll notice there is a folder inside called <code>data_training</code>. This holds some sample AI-generated feedback comments, which we use here to show how the tool works.</p>
+    </li>
+
+    <li>Open a new terminal for the <code>text-annotation-gui-main</code> folder. To do this, find the folder, right-click it and select <strong>New Terminal at Folder</strong>.
+      <figure class="shot shot-small">
+        <img src="assets/images/new_terminal.png" width="562" height="288" loading="lazy"
+             alt="The right-click menu on the text-annotation-gui-main folder with New Terminal at Folder highlighted.">
+      </figure>
+    </li>
+
+    <li>With the new terminal open, run the following:
+      <div class="cmd-wrap">
+        <pre class="cmd" id="launch-cmd"><code>python3 -m annotation_tool -f ./data_training -c ./config_example_layers.txt -o ./annotations_output -a <mark class="fill-in">Darcy</mark></code></pre>
+        <button class="btn copy-btn" type="button" data-copy="launch-cmd">Copy</button>
+      </div>
+      <ul class="cmd-notes">
+        <li>Replace the name highlighted in light blue (<mark class="fill-in">Darcy</mark>) with your own name.</li>
+        <li>This command uses the training data in <code>./data_training</code>. For the real annotations, replace <code>data_training</code> with the name of the data folder you moved in. In the example above that folder is called <code>Batch_1</code>, so you would write <code>-f ./Batch_1</code>.</li>
+      </ul>
+    </li>
+
+    <li>With the interface open, it should look something like this:
+      <figure class="shot">
+        <img src="assets/images/interface_open.png" width="3024" height="1898" loading="lazy"
+             alt="The annotation tool showing a feedback comment, with Previous, Save, Help and Next buttons at the top and the label keys for the level and question layers along the bottom.">
+      </figure>
+    </li>
+
+    <li>Please watch this short video on how to use the tool:
+      <div class="video">
+        <iframe src="https://drive.google.com/file/d/1grIuhMKIBnX-TDpeNv5iCV-O9RGMy2P2/preview" title="How to use the annotation tool (video)" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <p>If the video doesn’t play here, <a href="https://drive.google.com/file/d/1grIuhMKIBnX-TDpeNv5iCV-O9RGMy2P2/view?usp=sharing" rel="noopener">open it in Google Drive</a>.</p>
+    </li>
+
+    <li>If this were the real annotations, once you are finished you would send me the folder your annotations are saved in. In the command you used to launch the tool, you wrote <code>./annotations_output</code>, so the annotations are saved in the <code>annotations_output</code> folder, as in the image below:
+      <figure class="shot">
+        <img src="assets/images/folder_output.png" width="1878" height="386" loading="lazy"
+             alt="The text-annotation-gui-main folder in Finder with the new annotations_output folder selected.">
+      </figure>
+    </li>
+  </ol>
+</section>
+
+</div>
+</div>
+</main>
+<footer id="site-footer"></footer>
+<script src="assets/js/nav.js"></script>
+<script src="assets/js/crossref.js"></script>
+<script>
+(function () {
+  "use strict";
+  if (window.innerWidth <= 900) { const t = document.querySelector(".toc details"); if (t) t.open = false; }
+  if (window.GXref) window.GXref.fromHash(false);
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-copy]");
+    if (!b) return;
+    const src = document.getElementById(b.dataset.copy);
+    if (!src || !navigator.clipboard) return;
+    navigator.clipboard.writeText(src.textContent.trim()).then(() => {
+      b.textContent = "Copied";
+      setTimeout(() => { b.textContent = "Copy"; }, 1600);
+    }, () => {});
+  });
+})();
+</script>
+</body>
+</html>

@@ -26,7 +26,8 @@ GUIDE.home = {
     "Note, all page references in this document refer to the Hattie and Timperley paper, unless otherwise specified."
   ],
   changeLog: [
-    { date: "18 Nov 2026", text: "First draft released." }
+    { date: "18 Nov 2026", text: "First draft released." },
+    { date: "25 Nov 2026", text: "Added the Real Annotations page (installing and using the annotation tool)." }
   ]
 };
 

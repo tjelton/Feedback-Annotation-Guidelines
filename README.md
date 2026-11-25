@@ -6,6 +6,7 @@ An interactive, condensed version of the feedback annotation guidelines, built a
 - **Section 2:** Feedback Questions (feed-up, feed-back, feed-forward)
 - **Section 3:** Feedback Levels (self, task, process, self-regulation)
 - **Section 4:** Specificity (the ‘Instance’ and ‘What’ questions, coding by idea)
+- **Real Annotations:** installing and using the annotation tool ([text-annotation-gui](https://github.com/tjelton/text-annotation-gui))
 
 Main rules are always visible. Examples and the "telling them apart" rules expand when clicked. References such as "2.4 rule d" or "FT point a" link to what they mention. Sections 2, 3 and 4 each have a quiz: 20 random questions drawn from every example in the guidelines, with a 90% pass mark and instant feedback that links back to the relevant rule.
 
@@ -32,6 +33,8 @@ All guideline text lives in plain JS data files in `assets/data/`:
 | `specificity.js` | Section 4 (4.1–4.4 and the worked examples) |
 
 The pages, the "more examples from elsewhere" lists and the quiz bank are all generated from these files. If you add or edit an example in one place, it updates everywhere.
+
+The **Real Annotations** page is the exception: it's plain HTML, so edit `annotations.html` directly. Its screenshots are in `assets/images/`.
 
 ### Building blocks
 
